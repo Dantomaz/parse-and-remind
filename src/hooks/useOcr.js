@@ -27,7 +27,7 @@ const useOcr = () => {
       await worker.terminate();
 
       if (data?.data?.text) {
-        resultObject.data = data?.data?.text.replace(/^\s*[\r\n]/gm, "");
+        resultObject.data = data?.data?.text;
       } else {
         resultObject.error = ERROR_MESSAGE;
       }

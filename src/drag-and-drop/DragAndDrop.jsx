@@ -3,7 +3,7 @@ import { FileUploader } from "react-drag-drop-files";
 import styles from "./DragAndDrop.module.scss";
 
 const DragAndDrop = ({ onChange }) => {
-  const fileTypes = ["png"];
+  const fileTypes = ["png", "txt"];
 
   return (
     <div className={styles["container"]}>
