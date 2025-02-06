@@ -1,0 +1,21 @@
+.button {
+  display: flex;
+  align-items: last baseline;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: 1.1rem;
+  transition: transform 0.02s linear;
+  margin: 0;
+  padding: 0;
+
+  &:active {
+    transform: scale(0.8);
+  }
+
+  svg {
+    font-size: 1.2rem;
+  }
+}
