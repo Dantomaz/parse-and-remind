@@ -8,8 +8,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  font-size: 18px;
+}
+
 body {
   margin: 0;
+  background-color: #188ca0;
 }
 
 code {
