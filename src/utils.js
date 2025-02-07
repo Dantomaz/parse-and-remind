@@ -1,3 +1,5 @@
+import { ALLOWED_FILE_TYPES } from "./constants";
+
 export const capitalize = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 };
@@ -52,4 +54,16 @@ export const dateMatches = (date, year, month) => {
   const monthPadded = month.toString().padStart(2, "0");
   const regex = new RegExp(`^${year}-${monthPadded}-\\d{2}$`);
   return regex.test(date);
+};
+
+// returns array: [0] -> file name, [1] -> file extension
+export const splitFileExtension = (fileName) => {
+  const splitFileName = fileName.split(".");
+  const extension = splitFileName.pop();
+  return [splitFileName.join("."), extension];
+};
+
+// returns array
+export const getAllowedFileExtentions = () => {
+  return ALLOWED_FILE_TYPES.map((element) => element.extension);
 };

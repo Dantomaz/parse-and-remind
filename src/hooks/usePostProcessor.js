@@ -42,7 +42,14 @@ const usePostProcessor = () => {
     };
   };
 
-  const postProcess = (text) => {
+  const processFiles = (files) => {
+    return files
+      .map(processFile) // process each file separately
+      .flatMap((eventList) => eventList) // flatten into one array
+      .sort((event1, event2) => inChronologicalOrder(event1.start.date, event2.start.date)); // sort chronologically by date
+  };
+
+  const processFile = (text) => {
     const lines = text.split(/\r?\n/); // split the text by end of each line (in some cases it's '\r\n', in others it's '\n')
     const header = lines[0];
 
@@ -50,13 +57,12 @@ const usePostProcessor = () => {
       .map(extractDate) // remove unnecessary characters, leaving only the date (or empty string if no date found)
       .filter(containsDate) // keep lines that contain a date
       .filter(isNotPassed) // keep dates that have not yet passed
-      .sort(inChronologicalOrder)
       .map((date) => mapDateToEvent(date, header));
 
     return events;
   };
 
-  return { postProcess };
+  return { processFiles };
 };
 
 export default usePostProcessor;

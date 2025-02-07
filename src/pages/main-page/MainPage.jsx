@@ -2,16 +2,12 @@ import { useNavigate } from "react-router-dom";
 import FileUploader from "../../components/file-uploader/FileUploader";
 import useOcr from "../../hooks/useOcr";
 import usePostProcessor from "../../hooks/usePostProcessor";
+import { getAllowedFileExtentions } from "../../utils";
 import styles from "./MainPage.module.scss";
-
-const FILE_TYPES = {
-  png: "image/png",
-  txt: "text/plain",
-};
 
 const MainPage = () => {
   const { recognize } = useOcr();
-  const { postProcess } = usePostProcessor();
+  const { processFiles } = usePostProcessor();
   const navigate = useNavigate();
 
   const runOcr = async (file) => {
@@ -28,27 +24,36 @@ const MainPage = () => {
     });
   };
 
-  const processFile = async (file) => {
+  const processFilesAdded = async (files) => {
+    if (!files) {
+      return;
+    }
+
+    const filesContents = await Promise.all(files.map(readFile));
+    const events = processFiles(filesContents);
+
+    navigate("calendar", { state: { events } });
+  };
+
+  const readFile = async (file) => {
     let data;
 
-    if (file.type === FILE_TYPES.png) {
-      data = await runOcr(file);
-    } else if (file.type === FILE_TYPES.txt) {
+    if (file.type === "txt") {
       data = await readFromTxt(file);
+    } else {
+      data = await runOcr(file);
     }
 
     if (data?.error) {
       return;
     }
 
-    data = postProcess(data.data);
-
-    navigate("calendar", { state: { data } });
+    return data.data;
   };
 
   return (
     <div className={styles["container"]}>
-      <FileUploader fileTypes={Object.keys(FILE_TYPES)} onFileAdded={processFile} />
+      <FileUploader fileTypes={getAllowedFileExtentions()} onFilesAdded={processFilesAdded} />
     </div>
   );
 };

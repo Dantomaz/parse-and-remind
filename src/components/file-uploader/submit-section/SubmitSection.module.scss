@@ -1,0 +1,54 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  width: 70%;
+  background-color: #005e75;
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.4rem;
+  color: #e6fbff;
+
+  span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  svg {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #cdf7ff;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: transform 0.05s linear;
+  max-width: 8rem;
+
+  &:hover {
+    background-color: #cdf7ffc7;
+  }
+
+  &:active {
+    transform: none; // force override of default Button transform style
+  }
+}

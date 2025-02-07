@@ -4,7 +4,7 @@ import CalendarProvider from "../../components/calendar/CalendarProvider";
 
 const CalendarPage = () => {
   const { state } = useLocation();
-  const eventsToAdd = state?.data || [];
+  const eventsToAdd = state?.events || [];
 
   return (
     <CalendarProvider eventsToAdd={eventsToAdd}>
