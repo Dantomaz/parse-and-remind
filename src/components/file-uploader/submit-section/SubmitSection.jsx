@@ -5,7 +5,7 @@ import styles from "./SubmitSection.module.scss";
 
 const FileItem = ({ file }) => {
   const [name, extension] = splitFileExtension(file.name);
-  const icon = ALLOWED_FILE_TYPES.find((element) => element.extension === extension).icon;
+  const icon = ALLOWED_FILE_TYPES[extension].icon;
 
   return (
     <div className={styles["file-item"]}>

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import FileUploader from "../../components/file-uploader/FileUploader";
+import { ALLOWED_FILE_TYPES } from "../../constants";
 import useOcr from "../../hooks/useOcr";
 import usePostProcessor from "../../hooks/usePostProcessor";
 import { getAllowedFileExtentions } from "../../utils";
@@ -38,7 +39,7 @@ const MainPage = () => {
   const readFile = async (file) => {
     let data;
 
-    if (file.type === "txt") {
+    if (file.type === ALLOWED_FILE_TYPES.txt.type) {
       data = await readFromTxt(file);
     } else {
       data = await runOcr(file);

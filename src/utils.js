@@ -65,5 +65,5 @@ export const splitFileExtension = (fileName) => {
 
 // returns array
 export const getAllowedFileExtentions = () => {
-  return ALLOWED_FILE_TYPES.map((element) => element.extension);
+  return Object.keys(ALLOWED_FILE_TYPES);
 };
