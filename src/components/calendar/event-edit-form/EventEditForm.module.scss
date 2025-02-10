@@ -1,0 +1,58 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .select-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+  }
+
+  .select-container {
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    grid-template-columns: 1fr 30% 20% 40%;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #003846;
+    cursor: pointer;
+    transform: none;
+    width: fit-content;
+
+    &:hover svg {
+      background-color: rgba(#005e75, 0.8);
+    }
+
+    svg {
+      color: #fefefe;
+      background-color: #005e75;
+      border-color: #005e75;
+      border-radius: 50%;
+      font-size: 1rem;
+      width: 20px;
+      height: 20px;
+
+      &:hover {
+        background-color: rgba(#005e75, 0.8);
+      }
+    }
+  }
+
+  .gap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,23 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  gap: 10px;
+
+  p {
+    margin: 0;
+    text-align: justify;
+
+    span {
+      font-weight: 700;
+    }
+  }
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}

@@ -1,0 +1,47 @@
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 800;
+  background-color: rgba(black, 0.7);
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  padding: 25px 35px;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #cdf7ff;
+  border-radius: 20px;
+  box-shadow: 0 4px 4px 4px rgba(black, 0.2);
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .footer-button {
+    background-color: inherit;
+    border: solid #005e75 2px;
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 12px 24px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #005e75;
+      color: #e6fbff;
+    }
+  }
+}

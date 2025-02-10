@@ -67,3 +67,10 @@ export const splitFileExtension = (fileName) => {
 export const getAllowedFileExtentions = () => {
   return Object.keys(ALLOWED_FILE_TYPES);
 };
+
+export const isStringBlank = (string) => {
+  if (typeof string !== "string") {
+    return true;
+  }
+  return string.trim().length === 0;
+};

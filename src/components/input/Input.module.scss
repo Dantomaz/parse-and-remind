@@ -1,0 +1,144 @@
+// text input styling
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  padding: 4px 8px;
+  background: #d9f1f5;
+  border: 2px solid #003846;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow 0.1s;
+  color: #003846;
+
+  &:focus {
+    box-shadow: 0 0 5px rgba(0, 94, 117, 0.5);
+  }
+}
+
+.input-field-error {
+  border-color: rgb(226, 44, 44);
+
+  &:focus {
+    box-shadow: 0 0 5px rgba(226, 44, 44, 0.5);
+  }
+}
+
+.input-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #003846;
+  pointer-events: none;
+  margin-bottom: 5px;
+}
+
+.error-message {
+  padding: 2px 4px;
+  color: rgb(218, 9, 9);
+  background-color: rgba(240, 168, 168, 0.5);
+  border-radius: 5px;
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.input-field::-webkit-outer-spin-button,
+.input-field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// checkbox input styling
+.checkbox-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  min-height: 20px;
+  appearance: none;
+  background-color: #d9f1f5;
+  border: 2px solid #003846;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+
+  &:hover {
+    border-color: rgba(#005e75, 0.8);
+  }
+
+  &:checked {
+    background-color: #005e75;
+    border-color: #005e75;
+  }
+
+  &:checked::after {
+    position: absolute;
+    content: "✔";
+    color: #fefefe;
+  }
+
+  &:hover:checked {
+    background-color: rgba(#005e75, 0.8);
+    border: none;
+  }
+}
+
+.checkbox-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #003846;
+  cursor: pointer;
+}
+
+// radio input styling
+.radio-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  min-height: 20px;
+  appearance: none;
+  background-color: #d9f1f5;
+  border: 2px solid #003846;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba(#005e75, 0.8);
+  }
+
+  &:checked {
+    background-color: #005e75;
+    border-color: #005e75;
+  }
+
+  &:hover:checked {
+    background-color: rgba(#005e75, 0.8);
+    border: none;
+  }
+}
+
+.radio-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #003846;
+  cursor: pointer;
+}
