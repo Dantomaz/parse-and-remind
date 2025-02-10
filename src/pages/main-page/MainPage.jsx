@@ -1,3 +1,4 @@
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FileUploader from "../../components/file-uploader/FileUploader";
 import { ALLOWED_FILE_TYPES } from "../../constants";
@@ -6,10 +7,13 @@ import usePostProcessor from "../../hooks/usePostProcessor";
 import { getAllowedFileExtentions } from "../../utils";
 import styles from "./MainPage.module.scss";
 
+export const ProcessorContext = createContext();
+
 const MainPage = () => {
   const { recognize } = useOcr();
   const { processFiles } = usePostProcessor();
   const navigate = useNavigate();
+  const [isProcessing, setProcessing] = useState(false);
 
   const runOcr = async (file) => {
     return await recognize(URL.createObjectURL(file));
@@ -30,8 +34,12 @@ const MainPage = () => {
       return;
     }
 
+    setProcessing(true);
+
     const filesContents = await Promise.all(files.map(readFile));
     const events = processFiles(filesContents);
+
+    setProcessing(false);
 
     navigate("calendar", { state: { events } });
   };
@@ -53,9 +61,11 @@ const MainPage = () => {
   };
 
   return (
-    <div className={styles["container"]}>
-      <FileUploader fileTypes={getAllowedFileExtentions()} onFilesAdded={processFilesAdded} />
-    </div>
+    <ProcessorContext.Provider value={{ isProcessing }}>
+      <div className={styles["container"]}>
+        <FileUploader fileTypes={getAllowedFileExtentions()} onFilesAdded={processFilesAdded} />
+      </div>
+    </ProcessorContext.Provider>
   );
 };
 

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { createWorker } from "tesseract.js";
 
 const PARAMETERS = {
@@ -15,12 +14,8 @@ const resultObject = {
 };
 
 const useOcr = () => {
-  const [isRecognizing, setRecognizing] = useState(false);
-
   const recognize = async (imageUrl) => {
     if (imageUrl) {
-      setRecognizing(true);
-
       const worker = await createWorker();
       await worker.setParameters(PARAMETERS);
       const data = await worker.recognize(imageUrl);
@@ -32,12 +27,11 @@ const useOcr = () => {
         resultObject.error = ERROR_MESSAGE;
       }
 
-      setRecognizing(false);
       return resultObject;
     }
   };
 
-  return { recognize, isRecognizing };
+  return { recognize };
 };
 
 export default useOcr;
