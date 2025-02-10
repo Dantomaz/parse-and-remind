@@ -4,18 +4,18 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .file-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   font-size: 0.9rem;
   width: 70%;
   background-color: #005e75;
-  border-radius: 0.4rem;
-  padding: 0.2rem 0.4rem;
+  border-radius: 8px;
+  padding: 4px 8px;
   color: #e6fbff;
 
   span {
@@ -27,7 +27,6 @@
 
   svg {
     font-size: 1.5rem;
-    flex-shrink: 0;
   }
 }
 
@@ -39,10 +38,9 @@
   border: none;
   border-radius: 0.4rem;
   font-size: 1rem;
-  padding: 0.6rem 1.2rem;
+  padding: 15px 30px;
   cursor: pointer;
-  transition: transform 0.05s linear;
-  max-width: 8rem;
+  width: 140px;
 
   &:hover {
     background-color: #cdf7ffc7;
