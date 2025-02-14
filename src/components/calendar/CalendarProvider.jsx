@@ -35,11 +35,17 @@ const CalendarProvider = ({ children, eventsToAdd = {} }) => {
   }, [currentDate, events]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function findEventsForCurrentDate() {
-    const eventsForThisMonth = new Map();
+    const addNextEvent = (accumulatedEvents, event) => {
+      const day = Number(event.start.date.slice(-2));
+      const eventsForThisDay = accumulatedEvents.get(day);
+      const updatedEventsForThisDay = [...(eventsForThisDay || []), event];
+      accumulatedEvents.set(day, updatedEventsForThisDay);
+      return accumulatedEvents;
+    };
 
-    events
+    const eventsForThisMonth = events
       .filter((event) => dateMatches(event.start.date, currentDate.year, currentDate.month)) // only keep events that can be displayed in current calendar page
-      .forEach((event) => eventsForThisMonth.set(Number(event.start.date.slice(-2)), event)); // add to map with day numbers as keys for easy access
+      .reduce(addNextEvent, new Map()); // add to map with day numbers as keys for easy access
 
     setEventsForCurrentMonth(eventsForThisMonth);
   }

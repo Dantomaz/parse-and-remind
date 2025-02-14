@@ -19,8 +19,7 @@ const usePostProcessor = () => {
 
   const processFiles = (files) => {
     return files
-      .map(processFile) // process each file separately
-      .flatMap((eventList) => eventList) // flatten into one array
+      .flatMap(processFile) // process each file separately and flatten into one array
       .sort((event1, event2) => inChronologicalOrder(event1.start.date, event2.start.date)); // sort chronologically by date
   };
 
