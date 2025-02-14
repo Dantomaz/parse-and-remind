@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ALLOWED_FILE_TYPES } from "../../../constants";
 import { ProcessorContext } from "../../../pages/main-page/MainPage";
 import { splitFileExtension } from "../../../utils";
@@ -20,6 +20,20 @@ const FileItem = ({ file }) => {
 const SubmitSection = ({ files, onSubmit }) => {
   const { isProcessing } = useContext(ProcessorContext);
 
+  // update cursor for the entire page to show loading indicator
+  useEffect(() => {
+    if (isProcessing) {
+      document.body.style.cursor = "wait";
+    } else {
+      document.body.style.cursor = "default";
+    }
+
+    // cleanup function to reset cursor when component unmounts or isProcessing changes
+    return () => {
+      document.body.style.cursor = "default";
+    };
+  }, [isProcessing]);
+
   return (
     files && (
       <div className={styles["container"]}>
@@ -27,7 +41,7 @@ const SubmitSection = ({ files, onSubmit }) => {
           <FileItem key={index} file={file} />
         ))}
 
-        <Button className={styles["button"]} onClick={onSubmit}>
+        <Button className={`${styles["button"]} ${isProcessing && styles["button-loading"]}`} disabled={isProcessing} onClick={onSubmit}>
           {isProcessing ? "Processing..." : "Confirm"}
         </Button>
       </div>
