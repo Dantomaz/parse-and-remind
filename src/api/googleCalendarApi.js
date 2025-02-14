@@ -3,6 +3,7 @@ export const mapDateToEvent = (date, title) => {
 
   return {
     summary: title,
+    colorId: 8, // gray event color
     start: {
       date: date,
     },
