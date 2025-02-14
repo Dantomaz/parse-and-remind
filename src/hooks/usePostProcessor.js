@@ -1,7 +1,7 @@
 import { mapDateToEvent } from "../api/googleCalendarApi";
 
 const usePostProcessor = () => {
-  const isNotPassed = (date) => {
+  const isNotPast = (date) => {
     return new Date(date).getTime() > new Date().getTime();
   };
 
@@ -31,7 +31,7 @@ const usePostProcessor = () => {
     const events = lines
       .map(extractDate) // remove unnecessary characters, leaving only the date (or empty string if no date found)
       .filter(containsDate) // keep lines that contain a date
-      .filter(isNotPassed) // keep dates that have not yet passed
+      .filter(isNotPast) // keep dates that have not yet passed
       .map((date) => mapDateToEvent(date, title));
 
     return events;

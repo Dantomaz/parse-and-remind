@@ -45,19 +45,19 @@ const MainPage = () => {
   };
 
   const readFile = async (file) => {
-    let data;
+    let result;
 
     if (file.type === ALLOWED_FILE_TYPES.txt.type) {
-      data = await readFromTxt(file);
+      result = await readFromTxt(file);
     } else {
-      data = await runOcr(file);
+      result = await runOcr(file);
     }
 
-    if (data?.error) {
+    if (result?.error) {
       return;
     }
 
-    return data.data;
+    return result.data;
   };
 
   return (
