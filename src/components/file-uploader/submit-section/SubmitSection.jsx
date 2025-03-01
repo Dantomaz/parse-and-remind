@@ -36,18 +36,21 @@ const SubmitSection = ({ files, onSubmit, disableSubmit }) => {
 
   return (
     files && (
-      <div className={styles["container"]}>
-        {files?.map((file, index) => (
-          <FileItem key={index} file={file} />
-        ))}
-
-        <Button
-          className={`${styles["button"]} ${isProcessing && styles["button-loading"]}`}
-          disabled={!disableSubmit || isProcessing}
-          onClick={onSubmit}
-        >
-          {isProcessing ? "Processing..." : "Confirm"}
-        </Button>
+      <div className={styles["grid"]}>
+        <section className={styles["section"]}>
+          {files?.map((file, index) => (
+            <FileItem key={index} file={file} />
+          ))}
+        </section>
+        <section className={styles["section"]}>
+          <Button
+            className={`${styles["button"]} ${isProcessing && styles["button-loading"]}`}
+            disabled={!disableSubmit || isProcessing}
+            onClick={onSubmit}
+          >
+            {isProcessing ? "Processing..." : "Next"}
+          </Button>
+        </section>
       </div>
     )
   );

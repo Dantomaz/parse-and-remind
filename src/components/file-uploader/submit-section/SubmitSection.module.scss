@@ -1,7 +1,11 @@
-.container {
-  position: relative;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
   width: 100%;
   height: auto;
+}
+
+.section {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -31,9 +35,6 @@
 }
 
 .button {
-  position: absolute;
-  top: 0;
-  right: 0;
   background-color: #cdf7ff;
   border: none;
   border-radius: 0.4rem;

@@ -85,16 +85,21 @@ const MainPage = () => {
   return (
     <ProcessorContext.Provider value={{ isProcessing }}>
       <div className={styles["container"]}>
-        {googleAccessToken ? (
-          <Button className={styles["button"]} onClick={logout}>
-            <FcGoogle style={{ marginRight: "5px" }} /> Logout from Google
-          </Button>
-        ) : (
-          <Button className={styles["button"]} onClick={googleLogin}>
-            <FcGoogle style={{ marginRight: "5px" }} /> Login with Google
-          </Button>
-        )}
-        <FileUploader fileTypes={getAllowedFileExtentions()} onFilesAdded={processFilesAdded} disableSubmit={!!googleAccessToken} />
+        <main>
+          <header className={styles["header"]}>
+            <h1>Parse and Remind</h1>
+            {googleAccessToken ? (
+              <Button className={styles["button"]} onClick={logout}>
+                <FcGoogle style={{ marginRight: "5px" }} /> Logout from Google
+              </Button>
+            ) : (
+              <Button className={styles["button"]} onClick={googleLogin}>
+                <FcGoogle style={{ marginRight: "5px" }} /> Login with Google
+              </Button>
+            )}
+          </header>
+          <FileUploader fileTypes={getAllowedFileExtentions()} onFilesAdded={processFilesAdded} disableSubmit={!!googleAccessToken} />
+        </main>
       </div>
     </ProcessorContext.Provider>
   );
