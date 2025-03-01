@@ -111,7 +111,7 @@ const CalendarProvider = ({ children, eventsToAdd = {} }) => {
       return;
     }
 
-    const promises = events.map(insertEvent);
+    const promises = events.map((event) => insertEvent(event, token));
 
     return await Promise.all(promises);
   };
