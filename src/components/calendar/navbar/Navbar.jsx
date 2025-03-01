@@ -12,19 +12,29 @@ const Navbar = () => {
   return (
     <div className={styles["navigation"]}>
       <div className={styles["flex-group"]}>
-        <Button onClick={() => changeDate("year", -1)}>{<MdKeyboardDoubleArrowLeft />}</Button>
-        <Button onClick={() => changeDate("month", -1)}>{<MdKeyboardArrowLeft />}</Button>
+        <Button onClick={() => changeDate("year", -1)}>
+          <MdKeyboardDoubleArrowLeft />
+        </Button>
+        <Button onClick={() => changeDate("month", -1)}>
+          <MdKeyboardArrowLeft />
+        </Button>
       </div>
       <div className={styles["flex-group"]}>
-        <span>{getMonthName(currentDate.month)}</span>
-        <span>{currentDate.year}</span>
+        <h1 className={styles["flex-group"]}>
+          <span>{getMonthName(currentDate.month)}</span>
+          <span>{currentDate.year}</span>
+        </h1>
         <Button onClick={resetDate}>
           <GrPowerReset />
         </Button>
       </div>
       <div className={styles["flex-group"]}>
-        <Button onClick={() => changeDate("month", 1)}>{<MdKeyboardArrowRight />}</Button>
-        <Button onClick={() => changeDate("year", 1)}>{<MdKeyboardDoubleArrowRight />}</Button>
+        <Button onClick={() => changeDate("month", 1)}>
+          <MdKeyboardArrowRight />
+        </Button>
+        <Button onClick={() => changeDate("year", 1)}>
+          <MdKeyboardDoubleArrowRight />
+        </Button>
       </div>
     </div>
   );

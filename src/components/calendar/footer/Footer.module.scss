@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  margin-top: -25px;
+}
+
+.button {
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: solid #005e75 2px;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  padding: 15px 30px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #005e75;
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: #188ca0;
+    }
+  }
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  gap: 50px;
+  padding-bottom: 50px;
+  width: 360px;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  h2 {
+    align-self: center;
+    border-bottom: solid rgba(#003846, 0.4) 2px;
+    padding-bottom: 5px;
+  }
+}

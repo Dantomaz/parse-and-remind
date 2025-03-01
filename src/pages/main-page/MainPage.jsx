@@ -1,11 +1,15 @@
+import { useGoogleLogin } from "@react-oauth/google";
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getCalendarScope } from "../../api/googleCalendarApi";
+import Button from "../../components/button/Button";
 import FileUploader from "../../components/file-uploader/FileUploader";
 import { ALLOWED_FILE_TYPES } from "../../constants";
 import useOcr from "../../hooks/useOcr";
 import usePostProcessor from "../../hooks/usePostProcessor";
 import { getAllowedFileExtentions } from "../../utils";
 import styles from "./MainPage.module.scss";
+import { FcGoogle } from "react-icons/fc";
 
 export const ProcessorContext = createContext();
 
@@ -14,6 +18,14 @@ const MainPage = () => {
   const { processFiles } = usePostProcessor();
   const navigate = useNavigate();
   const [isProcessing, setProcessing] = useState(false);
+  const [googleAccessToken, setGoogleAccessToken] = useState(sessionStorage.getItem("googleAccessToken") || null);
+
+  const googleLogin = useGoogleLogin({
+    flow: "implicit",
+    scope: getCalendarScope(),
+    onSuccess: login,
+    onError: console.error,
+  });
 
   const runOcr = async (file) => {
     return await recognize(URL.createObjectURL(file));
@@ -60,10 +72,29 @@ const MainPage = () => {
     return result.data;
   };
 
+  function login(googleResponse) {
+    sessionStorage.setItem("googleAccessToken", googleResponse.access_token);
+    setGoogleAccessToken(googleResponse.access_token);
+  }
+
+  const logout = () => {
+    sessionStorage.removeItem("googleAccessToken");
+    setGoogleAccessToken(null);
+  };
+
   return (
     <ProcessorContext.Provider value={{ isProcessing }}>
       <div className={styles["container"]}>
-        <FileUploader fileTypes={getAllowedFileExtentions()} onFilesAdded={processFilesAdded} />
+        {googleAccessToken ? (
+          <Button className={styles["button"]} onClick={logout}>
+            <FcGoogle style={{ marginRight: "5px" }} /> Logout from Google
+          </Button>
+        ) : (
+          <Button className={styles["button"]} onClick={googleLogin}>
+            <FcGoogle style={{ marginRight: "5px" }} /> Login with Google
+          </Button>
+        )}
+        <FileUploader fileTypes={getAllowedFileExtentions()} onFilesAdded={processFilesAdded} disableSubmit={!!googleAccessToken} />
       </div>
     </ProcessorContext.Provider>
   );

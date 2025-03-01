@@ -7,7 +7,7 @@ const Card = ({ day, monthOffset, events }) => {
   return (
     <div className={`${styles["card"]} ${monthOffset && styles["faded"]}`}>
       <div className={styles["day-number"]}>{day}</div>
-      {!monthOffset && events?.map((event) => <EventItem event={event} />)}
+      {!monthOffset && events?.map((event, index) => <EventItem key={index} event={event} />)}
     </div>
   );
 };

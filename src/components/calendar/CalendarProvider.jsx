@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { insertEvent } from "../../api/googleCalendarApi";
 import { dateMatches, getCalendarDays } from "../../utils";
 
 export const CalendarContext = createContext();
@@ -102,6 +103,19 @@ const CalendarProvider = ({ children, eventsToAdd = {} }) => {
     setEvents((prevEvents) => prevEvents.map((event) => (event.summary === summary ? updateEvent(event, newEvent) : event)));
   };
 
+  const postEvents = async () => {
+    const token = sessionStorage.getItem("googleAccessToken");
+
+    if (!token) {
+      console.error("Could not create events. No access token found!");
+      return;
+    }
+
+    const promises = events.map(insertEvent);
+
+    return await Promise.all(promises);
+  };
+
   return (
     <CalendarContext.Provider
       value={{
@@ -112,6 +126,7 @@ const CalendarProvider = ({ children, eventsToAdd = {} }) => {
         countEventsWithSummary,
         updateEventBySummaryAndDate,
         updateAllEventsBySummary,
+        postEvents,
       }}
     >
       {children}

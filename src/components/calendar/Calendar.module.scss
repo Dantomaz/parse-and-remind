@@ -8,7 +8,7 @@
 
 .calendar {
   display: grid;
-  grid-template-rows: auto 3rem auto 1rem 1fr;
+  grid-template-rows: auto 3rem auto 1rem 1fr; // 'rem' values are the gap between content
   row-gap: 0;
   width: 65rem;
   height: 50rem;
@@ -17,6 +17,7 @@
   border-radius: 1rem;
   padding: 2rem;
 
+  // move children into every other row -> even number rows are the 'gap' between the actual content (see grid-template-rows)
   > :nth-child(1) {
     grid-row: 1;
   }
@@ -27,5 +28,9 @@
 
   > :nth-child(3) {
     grid-row: 5;
+  }
+
+  > :nth-child(4) {
+    grid-row: 7;
   }
 }

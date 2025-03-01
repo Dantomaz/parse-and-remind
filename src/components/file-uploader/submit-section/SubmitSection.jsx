@@ -17,7 +17,7 @@ const FileItem = ({ file }) => {
   );
 };
 
-const SubmitSection = ({ files, onSubmit }) => {
+const SubmitSection = ({ files, onSubmit, disableSubmit }) => {
   const { isProcessing } = useContext(ProcessorContext);
 
   // update cursor for the entire page to show loading indicator
@@ -41,7 +41,11 @@ const SubmitSection = ({ files, onSubmit }) => {
           <FileItem key={index} file={file} />
         ))}
 
-        <Button className={`${styles["button"]} ${isProcessing && styles["button-loading"]}`} disabled={isProcessing} onClick={onSubmit}>
+        <Button
+          className={`${styles["button"]} ${isProcessing && styles["button-loading"]}`}
+          disabled={!disableSubmit || isProcessing}
+          onClick={onSubmit}
+        >
           {isProcessing ? "Processing..." : "Confirm"}
         </Button>
       </div>

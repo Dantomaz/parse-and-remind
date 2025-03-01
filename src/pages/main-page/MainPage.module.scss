@@ -6,5 +6,29 @@
   padding: 10vh 0;
   width: 100vw;
   height: 100vh;
-  gap: 10vh;
+  gap: 20px;
+}
+
+.button {
+  top: 0;
+  right: 0;
+  background-color: #cdf7ff;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  padding: 15px 30px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(#cdf7ff, 0.8);
+  }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: #cdf7ff;
+    }
+  }
 }

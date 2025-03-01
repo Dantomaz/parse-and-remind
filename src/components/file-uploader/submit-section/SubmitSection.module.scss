@@ -43,7 +43,16 @@
   width: 140px;
 
   &:hover {
-    background-color: #cdf7ffc7;
+    background-color: rgba(#cdf7ff, 0.8);
+  }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: #cdf7ff;
+    }
   }
 }
 

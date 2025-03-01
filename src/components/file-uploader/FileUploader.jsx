@@ -3,7 +3,7 @@ import { FaFileUpload } from "react-icons/fa";
 import styles from "./FileUploader.module.scss";
 import SubmitSection from "./submit-section/SubmitSection";
 
-const FileUploader = ({ fileTypes, onFilesAdded }) => {
+const FileUploader = ({ fileTypes, onFilesAdded, disableSubmit }) => {
   const inputRef = useRef();
   const [isDragging, setDragging] = useState(false);
   const [files, setFiles] = useState();
@@ -87,7 +87,7 @@ const FileUploader = ({ fileTypes, onFilesAdded }) => {
         )}
       </div>
 
-      <SubmitSection files={files} onSubmit={submitFiles} />
+      <SubmitSection files={files} onSubmit={submitFiles} disableSubmit={disableSubmit} />
     </div>
   );
 };
