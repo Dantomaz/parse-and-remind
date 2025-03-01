@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { insertEvent } from "../../api/googleCalendarApi";
-import { dateMatches, getCalendarDays } from "../../utils";
+import { dateMatches, delay, getCalendarDays } from "../../utils";
 
 export const CalendarContext = createContext();
 
@@ -111,9 +111,15 @@ const CalendarProvider = ({ children, eventsToAdd = {} }) => {
       return;
     }
 
-    const promises = events.map((event) => insertEvent(event, token));
+    const responses = [];
 
-    return await Promise.all(promises);
+    for (const event of events) {
+      const response = await insertEvent(event, token);
+      responses.push(response);
+      await delay(200); // add delay between requests to prevent exceeding rate limit
+    }
+
+    return responses;
   };
 
   return (

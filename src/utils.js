@@ -74,3 +74,7 @@ export const isStringBlank = (string) => {
   }
   return string.trim().length === 0;
 };
+
+export const delay = async (timeInMs) => {
+  return new Promise((resolve) => setTimeout(resolve, timeInMs));
+};
