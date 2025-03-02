@@ -54,7 +54,7 @@ const Footer = () => {
       <Modal show={isModalOpened} onCancel={hideModal} cancelText={"No"} onOk={handleOk} okText={"Yes"}>
         <div className={styles["modal-content"]}>
           <h2>Confirmation</h2>
-          <p>All events shown will be created in your main google calendar. This action cannot be undone. Proceed?</p>
+          <p>All events shown will be created in your primary google calendar. This action cannot be undone. Proceed?</p>
         </div>
       </Modal>
     </div>
