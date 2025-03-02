@@ -1,10 +1,12 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { insertEvent } from "../../api/googleCalendarApi";
 import { dateMatches, delay, getCalendarDays } from "../../utils";
+import { SpinnerContext } from "../spinner/SpinnerProvider";
 
 export const CalendarContext = createContext();
 
 const CalendarProvider = ({ children, eventsToAdd = {} }) => {
+  const { setSpinnerText, showSpinner, hideSpinner } = useContext(SpinnerContext);
   const [events, setEvents] = useState(eventsToAdd); // save events passed to this provider
   const [initialDate, setInitialDate] = useState(); // allows resetting to the default calendar page
   const [currentDate, setCurrentDate] = useState(); // information regarding current calendar page
@@ -104,6 +106,8 @@ const CalendarProvider = ({ children, eventsToAdd = {} }) => {
   };
 
   const postEvents = async () => {
+    setSpinnerText("Creating events...");
+    showSpinner();
     const token = sessionStorage.getItem("googleAccessToken");
 
     if (!token) {
@@ -119,6 +123,7 @@ const CalendarProvider = ({ children, eventsToAdd = {} }) => {
       await delay(200); // add delay between requests to prevent exceeding rate limit
     }
 
+    hideSpinner();
     return responses;
   };
 
