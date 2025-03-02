@@ -17,7 +17,7 @@ const MainPage = () => {
   const { recognize } = useOcr();
   const { processFiles } = usePostProcessor();
   const navigate = useNavigate();
-  const [googleAccessToken, setGoogleAccessToken] = useState(sessionStorage.getItem("googleAccessToken") || null);
+  const [userLoggedIn, setUserLoggedIn] = useState(sessionStorage.getItem("googleAccessToken") ? true : false);
 
   const googleLogin = useGoogleLogin({
     flow: "implicit",
@@ -73,12 +73,12 @@ const MainPage = () => {
 
   function login(googleResponse) {
     sessionStorage.setItem("googleAccessToken", googleResponse.access_token);
-    setGoogleAccessToken(googleResponse.access_token);
+    setUserLoggedIn(true);
   }
 
   const logout = () => {
     sessionStorage.removeItem("googleAccessToken");
-    setGoogleAccessToken(null);
+    setUserLoggedIn(false);
   };
 
   return (
@@ -86,7 +86,7 @@ const MainPage = () => {
       <main>
         <header className={styles["header"]}>
           <h1>Parse and Remind</h1>
-          {googleAccessToken ? (
+          {userLoggedIn ? (
             <Button className={styles["button"]} onClick={logout}>
               <FcGoogle style={{ marginRight: "5px" }} /> Logout from Google
             </Button>
@@ -96,7 +96,7 @@ const MainPage = () => {
             </Button>
           )}
         </header>
-        <FileUploader fileTypes={getAllowedFileExtentions()} onFilesAdded={processFilesAdded} disableSubmit={!!googleAccessToken} />
+        <FileUploader fileTypes={getAllowedFileExtentions()} onFilesAdded={processFilesAdded} disableSubmit={!userLoggedIn} />
       </main>
     </div>
   );

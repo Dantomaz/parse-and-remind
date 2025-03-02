@@ -25,7 +25,7 @@ const SubmitSection = ({ files, onSubmit, disableSubmit }) => {
           ))}
         </section>
         <section className={styles["section"]}>
-          <Button className={styles["button"]} disabled={!disableSubmit} onClick={onSubmit}>
+          <Button className={styles["button"]} disabled={disableSubmit} onClick={onSubmit}>
             Next
           </Button>
         </section>

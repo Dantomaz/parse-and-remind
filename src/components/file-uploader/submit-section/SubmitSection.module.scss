@@ -48,11 +48,8 @@
   }
 
   &:disabled {
-    opacity: 0.8;
     cursor: not-allowed;
-
-    &:hover {
-      background-color: #cdf7ff;
-    }
+    background-color: rgba(#cdf7ff, 0.5);
+    color: rgba(black, 0.5);
   }
 }
