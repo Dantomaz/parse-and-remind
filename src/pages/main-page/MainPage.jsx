@@ -83,15 +83,15 @@ const MainPage = () => {
 
   return (
     <div className={styles["container"]}>
-      <main>
+      <main className={styles["card"]}>
         <header className={styles["header"]}>
           <h1>Parse and Remind</h1>
           {userLoggedIn ? (
-            <Button className={styles["button"]} onClick={logout}>
+            <Button theme="secondary" style={{ font: "white" }} onClick={logout}>
               <FcGoogle style={{ marginRight: "5px" }} /> Logout from Google
             </Button>
           ) : (
-            <Button className={styles["button"]} onClick={googleLogin}>
+            <Button onClick={googleLogin}>
               <FcGoogle style={{ marginRight: "5px" }} /> Login with Google
             </Button>
           )}

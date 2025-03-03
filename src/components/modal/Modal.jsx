@@ -13,12 +13,12 @@ const Modal = ({ children, show, onOk, okText, onCancel, cancelText, style, form
     return (
       <div className={styles["footer"]} style={{ justifyContent: footerJustifyStyle }}>
         {showCancelButton && (
-          <Button className={styles["footer-button"]} onClick={onCancel || (() => {})}>
+          <Button theme="secondary" onClick={onCancel || (() => {})}>
             {cancelText || "Cancel"}
           </Button>
         )}
         {showOkButton && (
-          <Button className={styles["footer-button"]} onClick={onOk || (() => {})} form={form}>
+          <Button type="submit" onClick={onOk || (() => {})} form={form}>
             {okText || "Okay"}
           </Button>
         )}

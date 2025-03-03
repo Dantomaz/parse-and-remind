@@ -45,12 +45,10 @@ const Footer = () => {
 
   return (
     <div className={styles["container"]}>
-      <Button className={styles["button"]} onClick={() => navigate("/")}>
+      <Button theme="secondary" onClick={() => navigate("/")}>
         Back
       </Button>
-      <Button className={styles["button"]} onClick={showModal}>
-        Create events
-      </Button>
+      <Button onClick={showModal}>Create events</Button>
       <Modal show={isModalOpened} onCancel={hideModal} cancelText={"No"} onOk={handleOk} okText={"Yes"}>
         <div className={styles["modal-content"]}>
           <h2>Confirmation</h2>

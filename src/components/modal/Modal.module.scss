@@ -21,7 +21,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #cdf7ff;
+  background: linear-gradient(to bottom, #cdf7ff, #c5f5ff);
   border-radius: 20px;
   box-shadow: 0 4px 4px 4px rgba(black, 0.2);
 }
@@ -33,14 +33,14 @@
 
   .footer-button {
     background-color: inherit;
-    border: solid #005e75 2px;
+    border: solid #024950 2px;
     border-radius: 8px;
     font-size: 1rem;
     padding: 12px 24px;
     cursor: pointer;
 
     &:hover {
-      background-color: #005e75;
+      background-color: #024950;
       color: white;
     }
   }

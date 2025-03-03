@@ -12,10 +12,10 @@
   row-gap: 0;
   width: 65rem;
   height: 50rem;
-  background-color: #d9f1f5;
+  background: linear-gradient(to bottom, #d0eef4, #b6dae0);
   color: #003846;
-  border-radius: 1rem;
-  padding: 2rem;
+  border-radius: 18px;
+  padding: 30px;
 
   // move children into every other row -> even number rows are the 'gap' between the actual content (see grid-template-rows)
   > :nth-child(1) {

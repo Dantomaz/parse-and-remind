@@ -26,7 +26,7 @@ const EventEditForm = ({ event, onSubmit, form }) => {
   const SelectReminderOptions = ({ index }) => {
     return (
       <div className={styles["select-container"]}>
-        <Button className={styles["button"]} type="button" onClick={() => removeReminder(index)}>
+        <Button className={styles["button"]} theme="ghost" onClick={() => removeReminder(index)}>
           <HiMinus />
         </Button>
         <Select defaultValue="popup" register={{ ...register(`reminders.overrides[${index}].method`) }}>
@@ -90,7 +90,7 @@ const EventEditForm = ({ event, onSubmit, form }) => {
             ))}
           </div>
 
-          <Button type="button" className={styles["button"]} onClick={addReminder}>
+          <Button className={styles["button"]} theme="ghost" onClick={addReminder}>
             <HiPlus />
             Add reminder
           </Button>

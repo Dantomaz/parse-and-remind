@@ -1,8 +1,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  width: 30rem;
+  gap: 30px;
+  width: 540px;
 }
 
 .drop-zone {
@@ -11,17 +11,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 12rem;
+  height: 220px;
   cursor: pointer;
   color: #003846;
-  background-color: #cdf7ff;
-  border: dashed #003846 0.1rem;
+  background-color: transparent;
+  border: 2px dashed #003846;
   border-radius: 0.5rem;
   font-size: 1.2rem;
   gap: 1rem;
 
   &:hover {
-    background-color: rgba(#cdf7ff, 0.8);
+    background-color: #b0d6dd;
   }
 
   p {
@@ -47,5 +47,5 @@
 }
 
 .drop-zone-dragging {
-  background-color: rgba(#cdf7ff, 0.8);
+  background-color: #b0d6dd;
 }

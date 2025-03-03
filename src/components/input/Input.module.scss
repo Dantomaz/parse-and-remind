@@ -74,12 +74,12 @@
   margin: 0;
 
   &:hover {
-    border-color: rgba(#005e75, 0.8);
+    border-color: #007b94;
   }
 
   &:checked {
     background-color: #005e75;
-    border-color: #005e75;
+    border-color: transparent;
   }
 
   &:checked::after {
@@ -89,8 +89,8 @@
   }
 
   &:hover:checked {
-    background-color: rgba(#005e75, 0.8);
-    border: none;
+    background-color: #007b94;
+    border-color: transparent;
   }
 }
 
@@ -122,17 +122,17 @@
   cursor: pointer;
 
   &:hover {
-    border-color: rgba(#005e75, 0.8);
+    border-color: #007b94;
   }
 
   &:checked {
     background-color: #005e75;
-    border-color: #005e75;
+    border-color: transparent;
   }
 
   &:hover:checked {
-    background-color: rgba(#005e75, 0.8);
-    border: none;
+    background-color: #007b94;
+    border-color: transparent;
   }
 }
 

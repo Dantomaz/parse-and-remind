@@ -2,22 +2,29 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 2.7rem;
-
-  Button {
-    &:active {
-      transform: scale(0.8);
-    }
-  }
+  padding: 0 45px;
 }
 
 .flex-group {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
 
   span {
     font-size: 1.2rem;
     font-weight: 600;
+  }
+}
+
+.btn-animated {
+  transition: transform 0.05s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &:active {
+    transform: scale(1);
   }
 }
