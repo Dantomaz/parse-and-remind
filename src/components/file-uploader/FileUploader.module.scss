@@ -2,23 +2,24 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-  width: 540px;
+  width: 100%;
+  height: 100%;
 }
 
 .drop-zone {
+  aspect-ratio: 16/7;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 220px;
   cursor: pointer;
   color: #003846;
   background-color: transparent;
   border: 2px dashed #003846;
-  border-radius: 0.5rem;
+  border-radius: 10px;
   font-size: 1.2rem;
-  gap: 1rem;
+  gap: 10px;
 
   &:hover {
     background-color: #b0d6dd;
@@ -40,8 +41,8 @@
 
 .file-types {
   position: absolute;
-  top: 0.5rem;
-  right: 1rem;
+  top: 10px;
+  right: 15px;
   font-size: 1rem;
   opacity: 0.8;
 }
